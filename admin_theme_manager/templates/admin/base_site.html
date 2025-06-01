@@ -1,0 +1,22 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+        body {
+            background-color: lightblue !important;
+        }
+    </style>
+    {% if active_theme.css_url %}
+        <link rel="stylesheet" href="{% static active_theme.css_url %}">
+    {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    {% if active_theme.js_url %}
+        <script src="{% static active_theme.js_url %}"></script>
+    {% endif %}
+{% endblock %}
