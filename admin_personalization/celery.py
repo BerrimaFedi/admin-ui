@@ -1,3 +1,4 @@
+# admin_personalization/celery.py
 import os
 from celery import Celery
 

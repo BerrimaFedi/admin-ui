@@ -1,8 +1,9 @@
 from .models import AdminTheme
 
-def admin_theme(request):
-    try:
-        active_theme = AdminTheme.objects.get(is_active=True)
-        return {'active_theme': active_theme}
-    except AdminTheme.DoesNotExist:
-        return {'active_theme': None}
+def active_theme(request):  # Changed function name to active_theme
+    theme = AdminTheme.objects.filter(is_active=True).first()
+    return {
+        "active_theme": theme,  # Changed key to active_theme to match template
+        "theme_css": theme.css_url if theme else "",
+        "theme_js": theme.js_url if theme and theme.js_url else ""
+    }

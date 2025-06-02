@@ -1,8 +1,0 @@
-/* Exemple : Changer la couleur de fond de l'en-tête de l'admin */
-#header {
-    background: #28a745; /* Couleur verte Bootstrap */
-    color: white;
-}
-body {
-    background-color: yellow !important;
-}

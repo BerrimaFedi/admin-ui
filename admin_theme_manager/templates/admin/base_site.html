@@ -4,8 +4,104 @@
 {% block extrastyle %}
     {{ block.super }}
     <style>
+        :root {
+            --header-bg-dark: #2c3e50; /* Dark blue-gray for header */
+            --text-light: #ecf0f1; /* Light text color */
+            --accent-green: #ffffff; /* Vibrant green for primary actions */
+            --accent-green-hover: #8c8c8ca8; /* Darker green on hover */
+            --button-secondary-bg: #34495e; /* Darker blue-gray for secondary buttons */
+            --button-secondary-hover: #2c3e50; /* Even darker on hover */
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s;
+        }
+
         body {
-            background-color: lightblue !important;
+            background-color: lightblue !important; /* Keep your original body background override */
+        }
+
+        /* Custom Header Buttons Container */
+        #custom-header-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+        }
+
+        /* Styling for the H1 (Django administration title) */
+        #site-header {
+            font-family: 'Segoe UI', sans-serif; /* Modern font */
+            font-weight: 600; /* Slightly bolder */
+            font-size: 1.8em; /* A bit larger */
+            color: var(--accent-green); /* Use the accent color for the main title */
+            text-shadow: 1px 1px 3px var(--shadow-color); /* Subtle text shadow */
+            margin-right: 30px; /* More space to the right of the title */
+            letter-spacing: 0.5px;
+            transition: color var(--transition-speed) ease;
+        }
+
+        #site-header:hover {
+            color: var(--accent-green-hover); /* Slight color change on hover */
+        }
+
+        /* Styling for the Buttons */
+        #custom-header-buttons a {
+            background-color: var(--button-secondary-bg); /* Darker secondary button background */
+            color: var(--text-light);
+            padding: 0.7em 1.5em; /* More padding for a bolder look */
+            text-decoration: none;
+            border-radius: 8px; /* More rounded corners */
+            font-size: 1em; /* Slightly larger font */
+            font-weight: 500; /* Medium weight */
+            box-shadow: 0 4px 8px var(--shadow-color); /* Subtle shadow */
+            transition: background-color var(--transition-speed) ease,
+                        transform var(--transition-speed) ease,
+                        box-shadow var(--transition-speed) ease;
+            display: inline-flex; /* Use flex for potential icon alignment */
+            align-items: center;
+            justify-content: center;
+            min-width: 80px; /* Ensure minimum width */
+        }
+
+        #custom-header-buttons a:hover {
+            background-color: var(--button-secondary-hover); /* Darken on hover */
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 6px 12px var(--shadow-color); /* Stronger shadow on hover */
+        }
+
+        #custom-header-buttons a:active {
+            transform: translateY(0); /* Press effect */
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        /* Specific button colors (optional, for primary actions) */
+        #custom-header-buttons a[href="/admin/"] {
+            background-color: var(--accent-green); /* Highlight admin button */
+        }
+        #custom-header-buttons a[href="/admin/"]:hover {
+            background-color: var(--accent-green-hover);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            #branding {
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center;
+                padding: 15px 20px;
+            }
+            #site-header {
+                margin-right: 0;
+                margin-bottom: 15px; /* Space between title and buttons */
+                font-size: 1.5em;
+            }
+            #custom-header-buttons {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 10px; /* Space between stacked buttons */
+                width: 100%; /* Make buttons take full width */
+            }
+            #custom-header-buttons a {
+                width: calc(100% - 2em); /* Adjust width for padding */
+                margin: 0; /* Remove horizontal margin when stacked */
+            }
         }
     </style>
     {% if active_theme.css_url %}
@@ -13,10 +109,25 @@
     {% endif %}
 {% endblock %}
 
-{% block extrahead %}
-    {{ block.super }}
-    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-    {% if active_theme.js_url %}
-        <script src="{% static active_theme.js_url %}"></script>
-    {% endif %}
+{% block branding %}
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+        <h1 id="site-header">Django administration</h1>
+        <div id="custom-header-buttons">
+            <a href="/graphql/">GraphQL</a>
+            <a href="/api/themes">DRF</a>
+
+               
+
+        </div>
+        </div>
+{% endblock %}
+
+{% block nav-global %}
+    <div style="display: flex; align-items: center; justify-content: flex-end;">
+        {{ block.super }}
+    </div>
+{% endblock %}
+
+{% block content %}
+ 
 {% endblock %}

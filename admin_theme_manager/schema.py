@@ -5,7 +5,7 @@ from .models import AdminTheme
 class AdminThemeType(DjangoObjectType):
     class Meta:
         model = AdminTheme
-        fields = ("id", "name", "css_url", "js_url", "is_active")
+        fields = "__all__"
 
 class SwitchAdminSkin(graphene.Mutation):
     class Arguments:

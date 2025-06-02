@@ -48,19 +48,27 @@ ROOT_URLCONF = 'admin_personalization.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'admin_theme_manager/templates'],  
+        'APP_DIRS': True, 
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'admin_theme_manager.context_processors.admin_theme',
+                'admin_theme_manager.context_processors.active_theme',  # Changed to active_theme
             ],
         },
     },
 ]
+
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Add this line for project-wide static
+    BASE_DIR / "admin_theme_manager" / "static", 
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 WSGI_APPLICATION = 'admin_personalization.wsgi.application'
 
@@ -111,11 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'admin_theme_manager', 'static'),
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     'SCHEMA': 'admin_theme_manager.schema.schema'
@@ -125,4 +130,4 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Europe/Tunis'
+CELERY_TIMEZONE = 'UTC'
