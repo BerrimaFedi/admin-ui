@@ -1,0 +1,468 @@
+/* admin_theme_manager/static/theming/css/testcss.css */
+
+/* --- VARIABLE DEFINITIONS (Dark Theme) --- */
+:root {
+    --primary: #a0d468; /* A nice green */
+    --secondary: #65bd36; /* Darker green */
+    --accent: #f0ad4e; /* A warm orange/yellow */
+    --primary-fg: #fff;
+
+    --body-fg: #d2d7de; /* Light gray text */
+    --body-bg: #22272e; /* Dark background */
+    --body-quiet-color: #818a91; /* Medium gray for quiet text */
+    --body-medium-color: #adb5bd; /* Slightly lighter gray */
+    --body-loud-color: #e9ecef; /* Almost white */
+
+    --header-color: #fff;
+    --header-branding-color: var(--accent);
+    --header-bg: #343a40; /* Darker gray header */
+    --header-link-color: var(--primary-fg);
+
+    --breadcrumbs-fg: #6c757d; /* Medium gray breadcrumbs */
+    --breadcrumbs-link-fg: var(--body-bg);
+    --breadcrumbs-bg: #343a40;
+
+    --link-fg: #5bc0de; /* Cyan-ish link */
+    --link-hover-color: #31b0d5; /* Darker cyan on hover */
+    --link-selected-fg: var(--secondary);
+
+    --hairline-color: #495057; /* Dark gray hairline */
+    --border-color: #495057; /* Dark gray border */
+
+    --error-fg: #d9534f; /* Red error text */
+
+    --message-success-bg: #002a37;
+    --message-warning-bg: #002a37;
+    --message-error-bg: #002a37;
+
+    --darkened-bg: #282e36; /* Slightly darker than --body-bg */
+    --selected-bg: #373e47; /* Darker selection */
+    --selected-row: #495057; /* Darker selected row */
+
+    --button-fg: #fff;
+    --button-bg: var(--secondary);
+    --button-hover-bg: #5cb85c; /* Slightly lighter green */
+    --default-button-bg: #5cb85c;
+    --default-button-hover-bg: var(--secondary);
+    --close-button-bg: #6c757d;
+    --close-button-hover-bg: #495057;
+    --delete-button-bg: #d9534f;
+    --delete-button-hover-bg: #c9302c;
+
+    --object-tools-fg: var(--button-fg);
+    --object-tools-bg: var(--close-button-bg);
+    --object-tools-hover-bg: var(--close-button-hover-bg);
+
+    --font-family-primary:
+        "Segoe UI",
+        system-ui,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-family-monospace:
+        ui-monospace,
+        Menlo,
+        Monaco,
+        "Cascadia Mono",
+        "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        "Courier New",
+        monospace,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    color-scheme: dark; /* Hint for browser dark mode */
+}
+
+body {
+    color: var(--body-fg);
+    background: var(--body-bg) !important; /* Override inline styles */
+}
+
+/* LINKS */
+a:link, a:visited {
+    color: var(--link-fg);
+}
+
+a:focus, a:hover {
+    color: var(--link-hover-color);
+}
+
+a.section:link, a.section:visited {
+    color: var(--header-link-color);
+}
+
+/* GLOBAL DEFAULTS */
+h1 {
+    color: var(--body-loud-color);
+}
+
+h2 {
+    color: var(--body-medium-color);
+}
+
+h3 {
+    color: var(--body-medium-color);
+}
+
+h4 {
+    color: var(--body-quiet-color);
+}
+
+h5 {
+    color: var(--body-quiet-color);
+}
+
+blockquote {
+    color: var(--body-quiet-color);
+    border-left-color: var(--border-color);
+}
+
+code, pre {
+    color: var(--body-quiet-color);
+    background: var(--darkened-bg);
+}
+
+hr {
+    color: var(--hairline-color);
+    background-color: var(--hairline-color);
+}
+
+/* TEXT STYLES & MODIFIERS */
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    color: var(--body-quiet-color);
+}
+
+.quiet, a.quiet:link, a.quiet:visited {
+    color: var(--body-quiet-color);
+}
+
+/* TABLES */
+table {
+    border-color: var(--border-color);
+}
+
+td, th {
+    border-bottom-color: var(--hairline-color);
+}
+
+thead th,
+tfoot td {
+    color: var(--body-quiet-color);
+    background: var(--body-bg);
+    border-top-color: var(--hairline-color);
+    border-bottom-color: var(--hairline-color);
+}
+
+tr.alt {
+    background: var(--darkened-bg);
+}
+
+tr:nth-child(odd), .row-form-errors {
+    background: var(--body-bg);
+}
+
+tr:nth-child(even),
+tr:nth-child(even) .errorlist,
+tr:nth-child(odd) + .row-form-errors,
+tr:nth-child(odd) + .row-form-errors .errorlist {
+    background: var(--darkened-bg);
+}
+
+/* SORTABLE TABLES */
+thead th {
+    background: var(--darkened-bg);
+}
+
+thead th a:link, thead th a:visited {
+    color: var(--body-quiet-color);
+}
+
+thead th.sorted {
+    background: var(--selected-bg);
+}
+
+table thead th .text a:focus, table thead th .text a:hover {
+    background: var(--selected-bg);
+}
+
+table thead th.sorted .sortoptions a {
+    background-image: url(../img/sorting-icons-dark.svg); /* Assuming you have dark icons */
+}
+
+table thead th.sorted:hover a.sortremove {
+    color: var(--link-fg);
+}
+
+table thead th.sorted .sortoptions a.sortremove:after {
+    color: var(--body-quiet-color);
+}
+
+table thead th.sorted .sortoptions a.sortremove:focus:after,
+table thead th.sorted .sortoptions a.sortremove:hover:after {
+    color: var(--link-hover-color);
+}
+
+/* FORM DEFAULTS */
+input:not([type]), input[type=text], input[type=password], input[type=email],
+input[type=url], input[type=number], input[type=tel], textarea, select,
+.vTextField {
+    border-color: var(--border-color);
+    color: var(--body-fg);
+    background-color: var(--darkened-bg);
+}
+
+input:not([type]):focus, input[type=text]:focus, input[type=password]:focus,
+input[type=email]:focus, input[type=url]:focus, input[type=number]:focus,
+input[type=tel]:focus, textarea:focus, select:focus, .vTextField:focus {
+    border-color: var(--link-fg);
+}
+
+/* FORM BUTTONS */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--button-bg);
+    color: var(--button-fg);
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active,
+.button:focus, input[type=submit]:focus, input[type=button]:focus,
+.button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: var(--button-hover-bg);
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: var(--default-button-bg);
+    color: var(--button-fg);
+}
+
+.button.default:active, input[type=submit].default:active,
+.button.default:focus, input[type=submit].default:focus,
+.button.default:hover, input[type=submit].default:hover {
+    background: var(--default-button-hover-bg);
+}
+
+/* MODULES */
+.module {
+    background: var(--body-bg);
+    border-color: var(--border-color);
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: var(--header-bg);
+    color: var(--header-color);
+    border-bottom-color: var(--border-color);
+}
+
+/* MESSAGES & ERRORS */
+ul.messagelist li {
+    background-color: var(--message-success-bg);
+    color: var(--body-fg);
+    background-image: url(../img/icon-yes-dark.svg); /* Assuming dark icons */
+}
+
+ul.messagelist li.warning {
+    background-color: var(--message-warning-bg);
+    color: var(--body-fg);
+    background-image: url(../img/icon-alert-dark.svg); /* Assuming dark icons */
+}
+
+ul.messagelist li.error {
+    background-color: var(--message-error-bg);
+    color: var(--body-fg);
+    background-image: url(../img/icon-no-dark.svg); /* Assuming dark icons */
+}
+
+.errornote {
+    color: var(--error-fg);
+    border-color: var(--error-fg);
+    background-color: var(--darkened-bg);
+}
+
+ul.errorlist {
+    color: var(--error-fg);
+    background: var(--darkened-bg);
+}
+
+.form-row.errors {
+    border-bottom-color: var(--hairline-color);
+}
+
+.errors input, .errors select, .errors textarea,
+td ul.errorlist + input, td ul.errorlist + select, td ul.errorlist + textarea {
+    border-color: var(--error-fg);
+    background-color: var(--darkened-bg);
+    color: var(--body-fg);
+}
+
+/* BREADCRUMBS */
+div.breadcrumbs {
+    background: var(--breadcrumbs-bg);
+    color: var(--breadcrumbs-fg);
+}
+
+div.breadcrumbs a {
+    color: var(--breadcrumbs-fg);
+}
+
+div.breadcrumbs a:focus, div.breadcrumbs a:hover {
+    color: var(--header-color);
+}
+
+/* ACTION ICONS */
+.viewlink, .inlineviewlink {
+    background-image: url(../img/icon-viewlink-dark.svg); /* Assuming dark icons */
+}
+
+.hidelink {
+    background-image: url(../img/icon-hidelink-dark.svg); /* Assuming dark icons */
+}
+
+.addlink {
+    background-image: url(../img/icon-addlink-dark.svg); /* Assuming dark icons */
+}
+
+.changelink, .inlinechangelink {
+    background-image: url(../img/icon-changelink-dark.svg); /* Assuming dark icons */
+}
+
+.deletelink {
+    background-image: url(../img/icon-deletelink-dark.svg); /* Assuming dark icons */
+}
+
+a.deletelink:link, a.deletelink:visited {
+    color: var(--error-fg);
+}
+
+a.deletelink:focus, a.deletelink:hover {
+    color: #b32d2d;
+}
+
+/* OBJECT TOOLS */
+.object-tools a:link, .object-tools a:visited {
+    background: var(--object-tools-bg);
+    color: var(--object-tools-fg);
+}
+
+.object-tools a:focus, .object-tools a:hover {
+    background-color: var(--object-tools-hover-bg);
+    color: var(--object-tools-fg);
+}
+
+.object-tools a.viewsitelink, .object-tools a.addlink {
+    background-image: url(../img/tooltag-arrowright-dark.svg); /* Assuming dark icons */
+}
+
+.object-tools a.addlink {
+    background-image: url(../img/tooltag-add-dark.svg); /* Assuming dark icons */
+}
+
+/* PAGE STRUCTURE */
+#container {
+    background: var(--body-bg);
+}
+
+/* HEADER */
+#header {
+    background: var(--header-bg);
+    color: var(--header-color);
+}
+
+#header a:link, #header a:visited, #logout-form button {
+    color: var(--header-link-color);
+}
+
+#site-name a:link, #site-name a:visited {
+    color: var(--accent);
+}
+
+#branding h2 {
+    color: var(--header-color);
+}
+
+#user-tools a, #logout-form button {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+/* SIDEBAR */
+#content-related {
+    background: var(--darkened-bg);
+}
+
+#content-related h3 {
+    color: var(--body-quiet-color);
+    border-bottom-color: var(--hairline-color);
+}
+
+#content-related .module h2 {
+    color: var(--body-loud-color);
+    border-bottom-color: var(--hairline-color);
+}
+
+.delete-confirmation form input[type="submit"] {
+    background: var(--delete-button-bg);
+    color: var(--button-fg);
+}
+
+.delete-confirmation form .cancel-link {
+    color: var(--button-fg);
+    background: var(--close-button-bg);
+}
+
+/* PAGINATOR */
+.paginator {
+    color: var(--body-quiet-color);
+    border-top-color: var(--hairline-color);
+    background: var(--body-bg);
+}
+
+.paginator a:link, .paginator a:visited {
+    background: var(--button-bg);
+    color: var(--button-fg);
+}
+
+.paginator a.showall {
+    color: var(--link-fg);
+}
+
+.paginator .this-page {
+    color: var(--body-loud-color);
+}
+
+/* VISUALLY HIDDEN */
+.visually-hidden {
+    color: var(--body-fg);
+    background-color: var(--body-bg);
+}
+
+
+/* CSS for the time watcher  */
+#time-watcher-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    z-index: 1000;
+}
+
+#time-spent {
+    font-weight: bold;
+}
+
+#current-time {
+    font-style: italic;
+}

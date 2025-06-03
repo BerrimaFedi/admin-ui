@@ -1,9 +1,11 @@
+# admin_theme_manager/apps.py
 from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
 
 class AdminThemeManagerConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
     name = 'admin_theme_manager'
-    verbose_name = _('Admin Theme Manager')
+    verbose_name = 'Admin Theme Manager' # Optional: A more readable name for the admin
 
     def ready(self):
-        import admin_theme_manager.signals
+        # Import your tasks module here to ensure signals are registered
+        import admin_theme_manager.tasks

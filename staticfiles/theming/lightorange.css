@@ -1,0 +1,99 @@
+/* admin_theme_manager/static/theming/css/light_orange.css */
+
+/* --- VARIABLE DEFINITIONS (Light Orange Theme) --- */
+:root {
+    --primary: #ffb74d; /* A light orange */
+    --secondary: #ffa726; /* A slightly darker orange */
+    --accent: #81c784; /* A complementary green */
+    --primary-fg: #333; /* Dark text on light background */
+
+    --body-fg: #444; /* Darker gray text */
+    --body-bg: #f5f5f5; /* Light background */
+    --body-quiet-color: #777; /* Medium gray for quiet text */
+    --body-medium-color: #555; /* Slightly darker gray */
+    --body-loud-color: #222; /* Dark text */
+
+    --header-color: #fff;
+    --header-branding-color: var(--accent);
+    --header-bg: var(--secondary); /* Orange header */
+    --header-link-color: var(--primary-fg);
+
+    --breadcrumbs-fg: #777; /* Medium gray breadcrumbs */
+    --breadcrumbs-link-fg: var(--body-bg);
+    --breadcrumbs-bg: #eee;
+
+    --link-fg: #039be5; /* Blue link */
+    --link-hover-color: #0288d1; /* Darker blue on hover */
+    --link-selected-fg: var(--secondary);
+
+    --hairline-color: #ddd; /* Light gray hairline */
+    --border-color: #ccc; /* Light gray border */
+
+    --error-fg: #d32f2f; /* Dark red error text */
+
+    --message-success-bg: #e8f5e9;
+    --message-warning-bg: #fffde7;
+    --message-error-bg: #ffebee;
+
+    --darkened-bg: #e0e0e0; /* Slightly darker than --body-bg */
+    --selected-bg: #f0f0f0; /* Light selection */
+    --selected-row: #e0e0e0; /* Light selected row */
+
+    --button-fg: #fff;
+    --button-bg: var(--secondary); /* Orange button */
+    --button-hover-bg: #fb8c00; /* Darker orange */
+    --default-button-bg: var(--accent); /* Green default button */
+    --default-button-hover-bg: #66bb6a; /* Darker green */
+    --close-button-bg: #9e9e9e;
+    --close-button-hover-bg: #757575;
+    --delete-button-bg: #e53935;
+    --delete-button-hover-bg: #c62828;
+
+    --object-tools-fg: var(--button-fg);
+    --object-tools-bg: var(--close-button-bg);
+    --object-tools-hover-bg: var(--close-button-hover-bg);
+
+    --font-family-primary:
+        "Segoe UI",
+        system-ui,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-family-monospace:
+        ui-monospace,
+        Menlo,
+        Monaco,
+        "Cascadia Mono",
+        "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        "Courier New",
+        monospace,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    color-scheme: light; /* Hint for browser light mode */
+}
+
+body {
+    color: var(--body-fg);
+    background: var(--body-bg) !important; /* Override inline styles */
+}
+
+/* Adjust other styles as needed to fit the light theme */
+a:link, a:visited {
+    color: var(--link-fg);
+}
+
+/* ... (rest of the CSS, adjust colors where needed for the light theme) ... */

@@ -1,5 +1,3 @@
-
-
 import os
 from pathlib import Path
 
@@ -30,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'graphene_django',  
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -48,15 +46,15 @@ ROOT_URLCONF = 'admin_personalization.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'admin_theme_manager/templates'],  
-        'APP_DIRS': True, 
+        'DIRS': [BASE_DIR / 'admin_theme_manager/templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'admin_theme_manager.context_processors.active_theme',  # Changed to active_theme
+                'admin_theme_manager.context_processors.active_theme', # Changed to active_theme
             ],
         },
     },
@@ -64,8 +62,8 @@ TEMPLATES = [
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Add this line for project-wide static
-    BASE_DIR / "admin_theme_manager" / "static", 
+    BASE_DIR / "static", # Add this line for project-wide static
+    BASE_DIR / "admin_theme_manager" / "static",
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -108,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC' # Keep this as UTC to avoid tzdata issues
 
 USE_I18N = True
 
@@ -117,8 +115,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -130,4 +126,4 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC'
+CELERY_TIMEZONE = 'UTC' # Ensure Celery also uses UTC
