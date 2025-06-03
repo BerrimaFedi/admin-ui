@@ -29,10 +29,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'graphene_django',
+    'corsheaders', # Added for CORS
+    'rest_framework.authtoken', # <--- THIS LINE IS CRUCIAL
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # Added for CORS, placed high
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,3 +131,23 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC' # Ensure Celery also uses UTC
+
+# --- CORS HEADERS CONFIGURATION ---
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Example for a frontend React/Vue in dev
+    "http://127.0.0.1:3000",
+    # "https://votre-domaine-frontend.com", # Your production domain
+]
+CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication', # <--- Ceci est en premier
+        'rest_framework.authentication.TokenAuthentication',   # <--- THIS LINE IS ALSO CRUCIAL
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # You might want to set this to IsAuthenticated if you want all DRF views
+        # to require authentication by default, or keep your IsSuperUser for specific views.
+        # 'rest_framework.permissions.IsAuthenticated',
+    ]
+}
